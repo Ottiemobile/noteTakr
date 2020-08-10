@@ -1,6 +1,6 @@
 const util = require('util');
 const fs = require('fs');
-const uuidv1 = require("uuid/v1"); 
+const uuidv1 = require("uuid"); 
 const { constants } = require('os');
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -34,7 +34,7 @@ class Notes { // creates a new class called not
     addNotes(note) { // function to add a new note
         const {title, text} = note; // creates an object "note".
 
-        const newNote = {tile, text, id: uuidv1}; //whenever a user is trying to make a new note, uuidV1 will make a random id for it.
+        const newNote = {title, text, id: uuidv1}; //whenever a user is trying to make a new note, uuidV1 will make a random id for it.
 
         return this.getNotes()
             .then(notes => [...notes, newNote])
