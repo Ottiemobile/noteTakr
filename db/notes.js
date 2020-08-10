@@ -7,11 +7,11 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 class Notes { // creates a new class called not
     read() {
-        return readFileAsync("db/db.json", "utf8");
+        return readFileAsync("db/db.json", "utf8"); // shows the notes from the database json file (db.json)
     }
 
     write(note) {
-        return writeFileAsync("db/db.json", JSON.stringify(note));
+        return writeFileAsync("db/db.json", JSON.stringify(note)); // makes a 
     }
 
     getNotes() {
@@ -23,10 +23,10 @@ class Notes { // creates a new class called not
           } 
 
           catch(err) {
-              parsedNotes = []; 
+              parsedNotes = []; // if there are no notes on file, it catches the error and returns a blank array
           }
 
-          return parsedNotes;
+          return parsedNotes; // returns an array of parsed notes 
 
         })
     }
@@ -34,7 +34,7 @@ class Notes { // creates a new class called not
     addNotes(note) { // function to add a new note
         const {title, text} = note; // creates an object "note".
 
-        const newNote = {title, text, id: uuidv1}; //whenever a user is trying to make a new note, uuidV1 will make a random id for it.
+        const newNote = {title, text, id: uuidv1}; //whenever a user is trying to make a new note, uuid will make a random id for it.
 
         return this.getNotes()
             .then(notes => [...notes, newNote])
